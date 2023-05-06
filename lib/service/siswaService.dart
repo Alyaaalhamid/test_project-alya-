@@ -10,7 +10,7 @@ class siswaService {
     if (response.statusCode == 200) {
       // print(response.body);
       //datumFromJson(response.body.toString());
-      studentFromJson(response.body.toString());
+      return studentFromJson(response.body.toString());
     } else {
       throw Exception('Gagal Mendapatkan Data');
     }
