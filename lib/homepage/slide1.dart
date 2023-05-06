@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:test_projectalya/homepage/slide2.dart';
 
@@ -11,6 +14,17 @@ class _TambahDataState extends State<TambahData> {
   TextEditingController _date = TextEditingController();
   String? valueChoose;
   List Province = ['Jakarta', 'Jawa Barat'];
+
+  // File? image;
+
+  // Future getImage() async {
+  //   final ImagePicker _picker = ImagePicker();
+  //   final XFile? imagepicked =
+  //       await _picker.pickImage(source: ImageSource.gallery);
+
+  //   image = File(imagepicked!.path);
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -197,12 +211,34 @@ class _TambahDataState extends State<TambahData> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 23),
-                  child: Text(
-                    'Foto Siswa',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Foto Siswa',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                              ),
+                              child: Text('Masukkan Foto'),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(
