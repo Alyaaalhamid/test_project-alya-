@@ -13,8 +13,48 @@ class TambahData extends StatefulWidget {
 class _TambahDataState extends State<TambahData> {
   TextEditingController _date = TextEditingController();
   String? valueChoose;
+  String? value;
   List Province = ['Jakarta', 'Jawa Barat'];
+  List Kota = ['Bekasi', 'Tanggerang'];
 
+  int selected = 0;
+  Widget CustomButton(String text, int index) {
+    //   return ElevatedButton(
+    //     onPressed: () {
+    //       setState(() {
+    //         selected = index;
+    //       });
+    //     },
+    //     child: Text(
+    //       text,
+    //       style: TextStyle(color: (selected == index) ? Colors.white : Colors.black),
+    //     ),
+
+    //     style: ElevatedButton.styleFrom(),
+    //   );
+    // }
+    return OutlineButton(
+      onPressed: () {
+        setState(() {
+          selected = index;
+        });
+      },
+      child: Text(
+        text,
+        style: TextStyle(
+            color: (selected == index)
+                ? Color.fromARGB(255, 126, 117, 117)
+                : Colors.black),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      borderSide:
+          BorderSide(color: (selected == index) ? Colors.grey : Colors.black),
+      color:
+          (selected == index) ? Color.fromARGB(255, 66, 63, 63) : Colors.black,
+    );
+  }
   // File? image;
 
   // Future getImage() async {
@@ -97,29 +137,10 @@ class _TambahDataState extends State<TambahData> {
                   height: 5,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: ElevatedButton(
-                        onPressed: () => null,
-                        child: Text('Pria'),
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size(130, 50),
-                          textStyle: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: ElevatedButton(
-                        onPressed: () => null,
-                        child: Text('Wanita'),
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: Size(130, 50),
-                            textStyle: TextStyle(fontSize: 16)),
-                      ),
-                    )
+                    CustomButton('Pria', 1),
+                    CustomButton('Wanita', 2)
                   ],
                 ),
                 SizedBox(
@@ -205,6 +226,20 @@ class _TambahDataState extends State<TambahData> {
                         fontSize: 15,
                         fontWeight: FontWeight.bold),
                   ),
+                ),
+                SizedBox(height: 10),
+                DropdownButton(
+                  hint: Text('Pilih Kota'),
+                  items: Kota.map((valueItem) {
+                    return DropdownMenuItem(
+                        value: valueItem, child: Text(valueItem));
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      value = newValue.toString();
+                    });
+                  },
+                  value: value,
                 ),
                 SizedBox(
                   height: 10,

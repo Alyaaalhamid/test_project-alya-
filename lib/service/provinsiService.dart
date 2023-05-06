@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
-import 'package:test_projectalya/model/siswa.dart';
+import 'package:test_projectalya/model/provinsi.dart';
 
-class siswaService {
-  static final String _baseUrl = 'https://hiringmobile.qtera.co.id/students';
+class provinsiService {
+  static final String _baseUrl = 'https://hiringmobile.qtera.co.id/province';
 
   Future getSiswa() async {
     final response = await http.get(Uri.parse(_baseUrl));
