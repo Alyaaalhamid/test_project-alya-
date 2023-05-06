@@ -14,8 +14,8 @@ class _TambahDataState extends State<TambahData> {
   TextEditingController _date = TextEditingController();
   String? valueChoose;
   String? value;
-  List Province = ['Jakarta', 'Jawa Barat'];
-  List Kota = ['Bekasi', 'Tanggerang'];
+  List Province = ['DKI Jakarta', 'Jawa Barat'];
+  List Kota = ['Bekasi', 'Jakarta Utara'];
 
   int selected = 0;
   Widget CustomButton(String text, int index) {
